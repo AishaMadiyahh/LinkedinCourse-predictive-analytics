@@ -35,9 +35,13 @@ X_train = s_scaler.fit_transform(X_train.astype(np.float64))
 X_test = s_scaler.transform(X_test.astype(np.float64))
 
 
-# TODO: Fit the Linear Regression model on the training data
+# Fit the Linear Regression model on the training data
+lr = LinearRegression()
+lr.fit(X_train, y_train)
 
-# TODO: Predict on both training and test datasets
+# Predict on both training and test datasets
+y_train_pred = lr.predict(X_train)
+y_test_pred = lr.predict(X_test)
 
 # Print the coefficients, intercept, and R-squared scores
 print("lr.coef_: {}".format(lr.coef_))
