@@ -40,14 +40,13 @@ s_scaler = StandardScaler()
 X_train = s_scaler.fit_transform(X_train.astype(np.float64))
 X_test = s_scaler.transform(X_test.astype(np.float64))
 
-# TODO: Fit the polynomial regression model on the training data
-# Example:
-# poly_lr = LinearRegression()
-# poly_lr.fit(X_train, y_train)
+# Fit the polynomial regression model on the training data
+poly_lr = LinearRegression()
+poly_lr.fit(X_train, y_train)
 
-# TODO: Predict on both training and test datasets
-# y_train_pred = ...
-# y_test_pred = ...
+# Predict on both training and test datasets
+y_train_pred = poly_lr.predict(X_train)
+y_test_pred = poly_lr.predict(X_test)
 
 # Print final coefficients, intercept, and R-squared scores
 print("Polynomial Regression (degree=2)")
