@@ -43,11 +43,11 @@ param_grid_svr = {
     'epsilon': [0.0001, 0.00001, 0.000001]
 }
 
-# TODO: Initialize GridSearchCV for SVR
-# svr = GridSearchCV(SVR(), param_grid=param_grid_svr, cv=5, verbose=3)
+# Initialize GridSearchCV for SVR
+svr = GridSearchCV(SVR(), param_grid=param_grid_svr, cv=5, verbose=3)
 
-# TODO: Fit the model using GridSearchCV
-# e.g., svr.fit(X_train, y_train)
+# Fit the model using GridSearchCV
+svr.fit(X_train, y_train)
 
 # Print the best parameters
 print("\nBest Parameters from GridSearch:")
