@@ -38,15 +38,16 @@ X_test = s_scaler.transform(X_test.astype(np.float64))
 # Instantiate Decision Tree Regressor
 dt = DecisionTreeRegressor(random_state=0)
 
-# TODO: Fit the model on the training data
-# e.g.: dt.fit(X_train, y_train)
+# Fit the model on the training data
+dt.fit(X_train, y_train)
 
-# TODO: Predict on both training and test datasets
-# y_train_pred = dt.predict(X_train)
-# y_test_pred = dt.predict(X_test)
+# Predict on both training and test datasets
+y_train_pred = dt.predict(X_train)
+y_test_pred = dt.predict(X_test)
 
-# Print the final scores (e.g., R-squared for train/test)
-print('dt train score %.3f, dt test score: %.3f' % (
-    dt.score(X_train, y_train),
-    dt.score(X_test, y_test)
-))
+# Print final scores
+print("Decision Tree Regressor")
+print(
+    "dt train score %.3f, dt test score: %.3f"
+    % (dt.score(X_train, y_train), dt.score(X_test, y_test))
+)
