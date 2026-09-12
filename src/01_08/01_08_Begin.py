@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 # Load the dataset
 data = pd.read_csv("input/insurance.csv")
@@ -40,6 +41,16 @@ y_final = data['charges']
 # Split the data into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(X_final, y_final, test_size=0.33, random_state=0)
 
-# TODO: Normalize the training and test sets using MinMaxScaler
+# Normalize the training and test sets
+n_scaler = MinMaxScaler()
+X_train_normalized = n_scaler.fit_transform(X_train)
+X_test_normalized = n_scaler.transform(X_test)
+print("\nNormalized Training Data:\n", X_train_normalized[:5])
+print("Normalized Test Data:\n", X_test_normalized[:5])
 
-# TODO: Standardize the training and test sets using StandardScaler
+# Standardize the training and test sets
+s_scaler = StandardScaler()
+X_train_standardized = s_scaler.fit_transform(X_train)
+X_test_standardized = s_scaler.transform(X_test)
+print("\nStandardized Training Data:\n", X_train_standardized[:5])
+print("Standardized Test Data:\n", X_test_standardized[:5])
