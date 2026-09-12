@@ -38,12 +38,12 @@ X_test = s_scaler.transform(X_test.astype(np.float64))
 # Instantiate SVR (just an example with linear kernel and C=300)
 svr = SVR(kernel='linear', C=300)
 
-# TODO: Fit the SVR model on the training data
-# svr.fit(X_train, y_train)
+# Fit the SVR model on the training data
+svr.fit(X_train, y_train)
 
-# TODO: Predict on both training and test datasets
-# y_train_pred = svr.predict(X_train)
-# y_test_pred = svr.predict(X_test)
+# Predict on both training and test datasets
+y_train_pred = svr.predict(X_train)
+y_test_pred = svr.predict(X_test)
 
 # Print final scores
 print("SVR (linear kernel, C=300)")
