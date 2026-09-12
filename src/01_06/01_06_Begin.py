@@ -20,10 +20,31 @@ print(data.isnull().sum())
 
 # Label Encoding: Encode 'sex' and 'smoker' columns
 # TODO: Create a label encoder instance and encode the 'sex' column
+le=LabelEncoder()
+data["sex"]=le.fit_transform(data["sex"])
+print("\nsklearn Label Encoding for 'sex':")
+print(dict(zip(le.classes_, le.transform(le.classes_))))
+print(data["sex"].head(10))
 
 # TODO: Create a label encoder instance and encode the 'smoker' column
+data["smoker"]=le.fit_transform(data["smoker"])
+print("\nsklearn Label Encoding for 'smoker':")
+print(dict(zip(le.classes_, le.transform(le.classes_))))
+print(data["smoker"].head(10))
 
 # One Hot Encoding: Encode the 'region' column
 # TODO: Create a one hot encoder instance and encode the 'region' column
+ohe = OneHotEncoder(sparse_output=False, drop='first')
+region_encoded = ohe.fit_transform(data[["region"]])
+region_columns = ohe.get_feature_names_out(["region"])
 
 # TODO: Convert the result into a DataFrame with appropriate column names
+region_df = pd.DataFrame(region_encoded, columns=region_columns)
+data = pd.concat([data.reset_index(drop=True), region_df.reset_index(drop=True)], axis=1)
+data.drop(columns=["region"], inplace=True)
+print ("\nSklearn One Hot Encoding for 'region':")
+print(data.head(10))
+
+# Display the updated DataFrame
+print("\nFinal DataFrame after encoding")
+print(data.head(15))
