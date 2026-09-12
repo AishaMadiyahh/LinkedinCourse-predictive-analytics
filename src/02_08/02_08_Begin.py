@@ -43,15 +43,15 @@ forest = RandomForestRegressor(
     n_jobs=-1
 )
 
-# TODO: Fit the model on the training data
-# e.g.:
-# forest.fit(X_train, y_train)
+# Fit the model on the training data
+forest.fit(X_train, y_train)
 
-# TODO: Predict on both training and test datasets
-# y_train_pred = forest.predict(X_train)
-# y_test_pred = forest.predict(X_test)
+# Predict on both training and test datasets
+y_train_pred = forest.predict(X_train)
+y_test_pred = forest.predict(X_test)
 
-# TODO: Print the final scores (e.g., R-squared for train/test)
+# Print final scores
+print("Random Forest Regressor:")
 print(
     "forest train score %.3f, forest test score: %.3f"
     % (forest.score(X_train, y_train), forest.score(X_test, y_test))
